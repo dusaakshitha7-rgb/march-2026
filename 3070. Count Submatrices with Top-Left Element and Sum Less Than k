@@ -1,0 +1,17 @@
+class Solution:
+    def countSubmatrices(self, grid, k):
+        m, n = len(grid), len(grid[0])
+        count = 0
+        
+        col_sum = [0] * n
+        
+        for i in range(m):
+            running = 0
+            for j in range(n):
+                running += grid[i][j]
+                col_sum[j] += running
+                
+                if col_sum[j] <= k:
+                    count += 1
+
+        return count
